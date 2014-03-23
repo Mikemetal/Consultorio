@@ -60,5 +60,30 @@ $(document).ready(function() {
 			}
 		]
 	});
+
+	$("#AgregarEvento").on('click',function(){
+
+		var titulo = $('#titulo').val();
+
+		var hi = parseInt($('#HoraInicio').val().substring(0,2));
+		var mi = parseInt($('#HoraInicio').val().substring(3,5));
+
+		var hf = parseInt($('#HoraFinal').val().substring(0,2));
+		var mf = parseInt($('#HoraFinal').val().substring(3,5));
+
+
+		var json = {
+			title: titulo,
+			start: new Date(y, m, d, hi, mi),
+			end: new Date(y, m, d, hf, mf),
+			allDay: false
+		};
+
+		$('#calendar').fullCalendar('renderEvent',json,true);
+
+		$('#HoraInicio').val("");
+		$('#HoraFinal').val("");
+		$('#titulo').val("");
+	});
 	
 });
